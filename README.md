@@ -9,7 +9,7 @@ A Flask web app where users share and browse interview experiences.
 - Edit/delete your posts
 
 ## Screenshots
-![Homepage]([screenshots/home.png](https://github.com/Vamsi8041/ShareExperience-/blob/0f4a45137f5415b1ff689e042e918ab02b2609cd/Screenshot%202025-05-03%20023441.png))
+![Homepage](https://github.com/Vamsi8041/ShareExperience-/blob/80b033d459a274645e45f3a2556f77a2cb23af20/Screenshot%202025-05-03%20023441.png)
 ![Experience Detail](screenshots/detail.png)
 
 ## Setup
