@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Interview Experiences Platform</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --primary-light: #818cf8;
+            --primary-dark: #3730a3;
+            --secondary-color: #0ea5e9;
+            --accent-color: #f97316;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --neutral-50: #f9fafb;
+            --neutral-100: #f3f4f6;
+            --neutral-200: #e5e7eb;
+            --neutral-300: #d1d5db;
+            --neutral-400: #9ca3af;
+            --neutral-500: #6b7280;
+            --neutral-600: #4b5563;
+            --neutral-700: #374151;
+            --neutral-800: #1f2937;
+            --neutral-900: #111827;
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--neutral-50) 0%, var(--neutral-100) 100%);
+            line-height: 1.5;
+            color: var(--neutral-800);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 0;
+            margin: 0;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            box-shadow: var(--shadow-md);
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .navbar-brand::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 0 rgba(249, 115, 22, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(249, 115, 22, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+            }
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link:focus {
+            color: white !important;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            border: none;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover, .btn-primary:focus {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline-light {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+        }
+
+        .btn-outline-light:hover, .btn-outline-light:focus {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-light {
+            background-color: white;
+            color: var(--primary-color);
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-light:hover, .btn-light:focus {
+            background-color: var(--neutral-50);
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 1.5rem;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-weight: 700;
+            color: var(--neutral-900);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: var(--radius-sm);
+        }
+
+        .search-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+
+        .search-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .search-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+
+        .search-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .search-group label {
+            font-weight: 500;
+            color: var(--neutral-700);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .search-input, .search-select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--neutral-300);
+            border-radius: var(--radius-md);
+            background-color: white;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .search-input:focus, .search-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+            outline: none;
+        }
+
+        .search-button {
+            min-width: 120px;
+            height: 48px;
+        }
+
+        .difficulty-1 { background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); }
+        .difficulty-2 { background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 100%); }
+        .difficulty-3 { background: linear-gradient(135deg, #6ee7b7 0%, #34d399 100%); }
+        .difficulty-4 { background: linear-gradient(135deg, #34d399 0%, #10b981 100%); }
+        .difficulty-5 { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .difficulty-6 { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); }
+        .difficulty-7 { background: linear-gradient(135deg, #fde68a 0%, #fcd34d 100%); }
+        .difficulty-8 { background: linear-gradient(135deg, #fcd34d 0%, #fbbf24 100%); }
+        .difficulty-9 { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); }
+        .difficulty-10 { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 24rem), 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .experience-card {
+            position: relative;
+            border: none;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+            box-shadow: var(--shadow-md);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .difficulty-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neutral-900);
+            margin-bottom: 0.5rem;
+            padding-right: 5rem;
+        }
+
+        .card-subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--neutral-600);
+        }
+
+        .card-meta i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .card-meta-author {
+            font-weight: 500;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .tag:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-text {
+            color: var(--neutral-700);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            color: white;
+            font-weight: 500;
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .read-more:hover, .read-more:focus {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            color: white;
+        }
+
+        .read-more i {
+            margin-left: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .read-more:hover i {
+            transform: translateX(3px);
+        }
+
+        .card-footer {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 0.75rem 1.5rem;
+            color: var(--neutral-600);
+            font-size: 0.75rem;
+        }
+
+        .alert {
+            border-radius: var(--radius-lg);
+            border: none;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .alert-info {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);
+            border-left: 4px solid var(--primary-color);
+            color: var(--primary-dark);
+        }
+
+        .alert-success {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
+            border-left: 4px solid var(--success-color);
+            color: var(--success-color);
+        }
+
+        .alert-warning {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.1) 100%);
+            border-left: 4px solid var(--warning-color);
+            color: var(--warning-color);
+        }
+
+        .alert-danger {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%);
+            border-left: 4px solid var(--error-color);
+            color: var(--error-color);
+        }
+
+        .alert-link {
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .alert-link:hover {
+            text-decoration-thickness: 2px;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--neutral-800) 0%, var(--neutral-900) 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-top: auto;
+            box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .footer-brand {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .footer-brand h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: var(--radius-sm);
+        }
+
+        .footer-brand p {
+            color: var(--neutral-400);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .footer-links-column {
+            min-width: 160px;
+        }
+
+        .footer-links-column h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-links-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links-column ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links-column ul li a {
+            color: var(--neutral-400);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-links-column ul li a:hover {
+            color: white;
+            transform: translateX(3px);
+        }
+
+        .footer-links-column ul li a i {
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--neutral-700);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-copyright {
+            color: var(--neutral-400);
+            font-size: 0.875rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--neutral-700);
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .no-experiences {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .no-experiences i {
+            font-size: 3rem;
+            color: var(--neutral-400);
+            margin-bottom: 1.5rem;
+        }
+
+        .no-experiences h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--neutral-800);
+            margin-bottom: 1rem;
+        }
+
+        .no-experiences p {
+            color: var(--neutral-600);
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: rgba(79, 70, 229, 0.98);
+                backdrop-filter: blur(10px);
+                margin: 1rem -1rem -1rem;
+                padding: 1rem;
+                border-radius: var(--radius-md);
+                box-shadow: var(--shadow-lg);
+            }
+            
+            .card-grid {
+                grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+            }
+        }
+
+        @media (max-width: 767px) {
+            .navbar {
+                padding: 0.75rem 0;
+            }
+            
+            h1 {
+                font-size: 1.75rem;
+            }
+            
+            .search-group {
+                flex: 1 0 100%;
+            }
+            
+            .search-button {
+                width: 100%;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .difficulty-badge {
+                top: 0.75rem;
+                right: 0.75rem;
+                padding: 0.25rem 0.75rem;
+            }
+            
+            .card-body, .card-footer {
+                padding: 1.25rem;
+            }
+        }
+
+        /* Animation effects */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-grid {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .experience-card {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .card-grid .experience-card:nth-child(1) { animation-delay: 0.1s; }
+        .card-grid .experience-card:nth-child(2) { animation-delay: 0.2s; }
+        .card-grid .experience-card:nth-child(3) { animation-delay: 0.3s; }
+        .card-grid .experience-card:nth-child(4) { animation-delay: 0.4s; }
+        .card-grid .experience-card:nth-child(5) { animation-delay: 0.5s; }
+        .card-grid .experience-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">Interview Experiences</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/"><i class="bi bi-house-door"></i> Home</a>
+                    </li>
+                    {% if 'user_id' in session %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/submit"><i class="bi bi-plus-circle"></i> Share Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/my_experiences"><i class="bi bi-collection"></i> My Experiences</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <ul class="navbar-nav">
+                    {% if 'user_id' in session %}
+                    <li class="nav-item">
+                        <span class="navbar-text me-3"><i class="bi bi-person-circle"></i> Welcome, {{ session['username'] }}</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light" href="/logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light me-2" href="/login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-light" href="/register"><i class="bi bi-person-plus"></i> Register</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show">
+                        {% if category == 'success' %}
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                        {% elif category == 'danger' %}
+                            <i class="bi bi-exclamation-circle-fill me-2"></i>
+                        {% elif category == 'warning' %}
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        {% else %}
+                            <i class="bi bi-info-circle-fill me-2"></i>
+                        {% endif %}
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <h1>Shared Interview Experiences</h1>
+
+        <div class="search-card">
+            <form method="get" action="/">
+                <div class="search-row">
+                    <div class="search-group">
+                        <label for="search"><i class="bi bi-search"></i> Search</label>
+                        <input type="text" 
+                           id="search"
+                           name="search" 
+                           class="search-input" 
+                           placeholder="Company, role or keywords..." 
+                           value="{{ search_query }}"
+                           list="companyList"
+                           autocomplete="off">
+                        <datalist id="companyList">
+                            {% for company in unique_companies %}
+                                <option value="{{ company }}">
+                            {% endfor %}
+                        </datalist>
+                    </div>
+                    <div class="search-group">
+                        <label for="tag"><i class="bi bi-tag"></i> Filter by Tag</label>
+                        <select name="tag" id="tag" class="search-select">
+                            <option value="">All Tags</option>
+                            {% for tag in all_tags %}
+                                <option value="{{ tag }}" {% if selected_tag == tag %}selected{% endif %}>{{ tag }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="search-group" style="flex: 0 0 auto;">
+                        <button type="submit" class="btn btn-primary search-button">
+                            <i class="bi bi-filter"></i> Filter
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        {% if experiences %}
+            <div class="card-grid">
+                {% for exp in experiences %}
+                    <div class="experience-card difficulty-{{ exp['difficulty'] }}">
+                        <div class="card-body">
+                            <div class="difficulty-badge">
+                                <i class="bi bi-speedometer2"></i> Difficulty: {{ exp['difficulty'] }}/10
+                            </div>
+                            <h5 class="card-title">{{ exp['company'] }}</h5>
+                            <h6 class="card-subtitle">{{ exp['role'] }}</h6>
+                            
+                            <div class="card-meta">
+                                <i class="bi bi-person-circle"></i>
+                                <span class="card-meta-author">{{ exp['username'] }}</span>
+                            </div>
+                            
+                            {% if exp['tags'] %}
+                                <div class="tags-container">
+                                    {% for tag in exp['tags'].split(',') %}
+                                        <span class="tag">{{ tag.strip() }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            
+                            <p class="card-text">{{ exp['experience'] | truncate(200) }}</p>
+                            
+                            <a href="{{ url_for('view_experience', exp_id=exp['id']) }}" class="read-more">
+                                Read Full Experience <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="card-footer">
+                            <i class="bi bi-calendar3"></i> Posted on {{ exp['created_at'] }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-experiences">
+                <i class="bi bi-journal-text"></i>
+                <h3>No experiences found</h3>
+                <p>Be the first to share your interview experience and help others prepare for their dream job!</p>
+                <a href="/submit" class="btn btn-primary">
+                    <i class="bi bi-plus-circle me-2"></i> Share Your Experience
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Interview Experiences</h3>
+                    <p>A community-driven platform where professionals share their interview experiences to help others prepare and succeed in their job search.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="/"><i class="bi bi-chevron-right"></i> Home</a></li>
+                            <li><a href="/submit"><i class="bi bi-chevron-right"></i> Share Experience</a></li>
+                            <li><a href="/my_experiences"><i class="bi bi-chevron-right"></i> My Experiences</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#"><i class="bi bi-chevron-right"></i> Interview Tips</a></li>
+                            <li><a href="#"><i class="bi bi-chevron-right"></i> Resume Guide</a></li>
+                            <li><a href="#"><i class="bi bi-chevron-right"></i> Career Advice</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#"><i class="bi bi-chevron-right"></i> About Us</a></li>
+                            <li><a href="#"><i class="bi bi-chevron-right"></i> Contact</a></li>
+                            <li><a href="#"><i class="bi bi-chevron-right"></i> Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; Interview Experiences | All Rights Reserved</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://github.com/Vamsi8041" class="social-icon"><i class="bi bi-github"></i></a>
+                    <a href="#" class="social-icon"><i class="bi bi-discord"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
